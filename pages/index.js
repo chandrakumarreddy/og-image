@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 
 const OG_IMAGE_URL = "https://express-vercel-og-image.vercel.app/api/og-image";
 const WEBSITE_URL =
-  procees.env.WEBSITE_URL || "https://og-image-xi-nine.vercel.app";
+  process.env.WEBSITE_URL || "https://og-image-xi-nine.vercel.app";
 
 export default function Home() {
   const router = useRouter();
