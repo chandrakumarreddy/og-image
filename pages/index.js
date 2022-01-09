@@ -2,7 +2,8 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { useRouter } from "next/router";
 
-const WEBSITE_URL = process.env.WEBSITE_URL || "http://localhost:3000";
+const WEBSITE_URL =
+  process.env.WEBSITE_URL || "https://og-image-xi-nine.vercel.app";
 
 export default function Home() {
   const router = useRouter();
