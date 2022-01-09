@@ -2,14 +2,23 @@ import chromium from "chrome-aws-lambda";
 import playwright from "playwright-core";
 
 export default async function handler(req, res) {
-  const browser = await playwright.chromium.launch({
-    // args: chromium.args,
-    // executablePath:
-    //   process.env.NODE_ENV !== "development"
-    //     ? await chromium.executablePath
-    //     : "/usr/bin/chromium",
-    // headless: process.env.NODE_ENV !== "development" ? chromium.headless : true,
-  });
+  const browser = await playwright.chromium.launch(
+    process.env.AWS_EXECUTION_ENV
+      ? {
+          args: [
+            ...chromium.args,
+            "--hide-scrollbars",
+            "--disable-web-security",
+          ],
+          executablePath: await chrome.executablePath,
+          headless: true,
+        }
+      : {
+          args: [],
+          executablePath:
+            "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+        }
+  );
   const page = await browser.newPage({
     viewport: {
       width: 1200,
