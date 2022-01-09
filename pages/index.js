@@ -9,7 +9,7 @@ export default function Home() {
   const router = useRouter();
   const searchParams = new URLSearchParams();
   searchParams.set("path", `${WEBSITE_URL}${router.asPath}`);
-  searchParams.set("selector", `#grid-selector`);
+  // searchParams.set("selector", `#grid-selector`);
   const fullImageURL = `${WEBSITE_URL}/api/image?${searchParams}`;
   return (
     <div className={styles.container}>
