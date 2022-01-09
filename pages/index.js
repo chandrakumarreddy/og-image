@@ -2,15 +2,16 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { useRouter } from "next/router";
 
+const OG_IMAGE_URL = "https://express-vercel-og-image.vercel.app/api/og-image";
 const WEBSITE_URL =
-  process.env.WEBSITE_URL || "https://og-image-xi-nine.vercel.app";
+  procees.env.WEBSITE_URL || "https://og-image-xi-nine.vercel.app";
 
 export default function Home() {
   const router = useRouter();
   const searchParams = new URLSearchParams();
   searchParams.set("path", `${WEBSITE_URL}${router.asPath}`);
-  // searchParams.set("selector", `#grid-selector`);
-  const fullImageURL = `${WEBSITE_URL}/api/image?${searchParams}`;
+  searchParams.set("selector", `#grid-selector`);
+  const fullImageURL = `${OG_IMAGE_URL}?${searchParams}`;
   return (
     <div className={styles.container}>
       <Head>
