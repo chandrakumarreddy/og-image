@@ -9,19 +9,16 @@ export default function About(props) {
         <title>About page</title>
         <meta property="og:type" content="website" />
         <meta property="og:url" content={ogUrl} />
-        <meta property="og:title" content="Planner JS" />
-        <meta
-          property="og:description"
-          content="Lightweight, interactive planner. Visualize tasks using an HTML canvas."
-        />
+        <meta property="og:title" content="Loco Achievements" />
+        <meta property="og:description" content="Your achievements with loco" />
         <meta property="og:image" content={ogImageUrl} />
 
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={`${ogUrl}`} />
-        <meta property="twitter:title" content="Planner JS" />
+        <meta property="twitter:title" content="Loco Achievements" />
         <meta
           property="twitter:description"
-          content="Lightweight, interactive planner. Visualize tasks using an HTML canvas."
+          content="Your achievements with loco"
         />
         <meta property="twitter:image" content={ogImageUrl} />
       </Head>
@@ -33,10 +30,17 @@ export default function About(props) {
 }
 
 export const getServerSideProps = () => {
+  const data = {
+    name: "chandra",
+    rank: "1",
+    game: "BGMI LOCO TESTING",
+  };
   return {
     props: {
       ogUrl: "http://loco.gg/about",
-      ogImageUrl: "https://express-vercel-og-image.vercel.app/api/get-image",
+      ogImageUrl: `https://express-vercel-og-image.vercel.app/api/get-image?template_data=${btoa(
+        JSON.stringify(data)
+      )}`,
     },
   };
 };
