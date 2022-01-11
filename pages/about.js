@@ -30,17 +30,18 @@ export default function About(props) {
 }
 
 export const getServerSideProps = () => {
-  const data = {
+  const data = JSON.stringify({
     name: "chandra",
     rank: "1",
     game: "BGMI LOCO TESTING",
-  };
+  });
+  const encryptedData = process.browser
+    ? btoa(data)
+    : Buffer.from(data, "utf-8").toString("base64");
   return {
     props: {
       ogUrl: "http://loco.gg/about",
-      ogImageUrl: `https://express-vercel-og-image.vercel.app/api/get-image?template_data=${btoa(
-        JSON.stringify(data)
-      )}`,
+      ogImageUrl: `https://express-vercel-og-image.vercel.app/api/get-image?template_data=${encryptedData}`,
     },
   };
 };
